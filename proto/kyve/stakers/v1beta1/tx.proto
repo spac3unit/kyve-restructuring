@@ -1,0 +1,82 @@
+syntax = "proto3";
+
+package kyve.stakers.v1beta1;
+
+option go_package = "github.com/KYVENetwork/chain/x/stakers/types";
+
+// Msg defines the Msg service.
+service Msg {
+  // CreateStaker ...
+  rpc CreateStaker(MsgCreateStaker) returns (MsgCreateStakerResponse);
+  // UpdateMetadata ...
+  rpc UpdateMetadata(MsgUpdateMetadata) returns (MsgUpdateMetadataResponse);
+  // UpdateCommission ...
+  rpc UpdateCommission(MsgUpdateCommission) returns (MsgUpdateCommissionResponse);
+  // JoinPool ...
+  rpc JoinPool(MsgJoinPool) returns (MsgJoinPoolResponse);
+  // LeavePool ...
+  rpc LeavePool(MsgLeavePool) returns (MsgLeavePoolResponse);
+}
+
+// MsgStakePool defines a SDK message for staking in a pool.
+message MsgCreateStaker {
+  // creator ...
+  string creator = 1;
+  // amount ...
+  uint64 amount = 2;
+}
+
+// MsgStakePoolResponse defines the Msg/StakePool response type.
+message MsgCreateStakerResponse {}
+
+// MsgUpdateMetadata defines a SDK message for claiming the uploader role.
+message MsgUpdateMetadata {
+  // creator ...
+  string creator = 1;
+  // moniker ...
+  string moniker = 2;
+  // website ...
+  string website = 3;
+  // logo
+  string logo = 4;
+}
+
+// MsgUpdateMetadataResponse defines the Msg/MsgUpdateMetadata response type.
+message MsgUpdateMetadataResponse {}
+
+// MsgUpdateCommission ...
+message MsgUpdateCommission {
+  // creator ...
+  string creator = 1;
+  // commission ...
+  string commission = 2;
+}
+
+// MsgUpdateCommissionResponse ...
+message MsgUpdateCommissionResponse {}
+
+// MsgJoinPool ...
+message MsgJoinPool {
+  // creator ...
+  string creator = 1;
+  // pool_id ...
+  uint64 pool_id = 2;
+  // valaddress ...
+  string valaddress = 3;
+  // amount ...
+  uint64 amount = 4;
+}
+
+// MsgJoinPoolResponse ...
+message MsgJoinPoolResponse {}
+
+// MsgLeavePool ...
+message MsgLeavePool {
+  // creator ...
+  string creator = 1;
+  // pool_id ...
+  uint64 pool_id = 2;
+}
+
+// MsgReactivateStakerResponse ...
+message MsgLeavePoolResponse {}

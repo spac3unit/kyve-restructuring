@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package kyve.pool.v1beta1;
+
+option go_package = "github.com/KYVENetwork/chain/x/pool/types";
+
+// Msg defines the Msg service.
+service Msg {
+  // FundPool ...
+  rpc FundPool(MsgFundPool) returns (MsgFundPoolResponse);
+  // DefundPool ...
+  rpc DefundPool(MsgDefundPool) returns (MsgDefundPoolResponse);
+}
+
+// MsgFundPool defines a SDK message for funding a pool.
+message MsgFundPool {
+  // creator ...
+  string creator = 1;
+  // id ...
+  uint64 id = 2;
+  // amount ...
+  uint64 amount = 3;
+}
+
+// MsgFundPoolResponse defines the Msg/DefundPool response type.
+message MsgFundPoolResponse {}
+
+// MsgDefundPool defines a SDK message for defunding a pool.
+message MsgDefundPool {
+  // creator ...
+  string creator = 1;
+  // id ...
+  uint64 id = 2;
+  // amount ...
+  uint64 amount = 3;
+}
+
+// MsgDefundPoolResponse defines the Msg/DefundPool response type.
+message MsgDefundPoolResponse {}

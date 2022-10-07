@@ -1,0 +1,70 @@
+syntax = "proto3";
+
+package kyve.delegation.v1beta1;
+
+option go_package = "github.com/KYVENetwork/chain/x/delegation/types";
+
+// Msg defines the Msg service.
+service Msg {
+  // DelegatePool ...
+  rpc Delegate(MsgDelegate) returns (MsgDelegateResponse);
+  // WithdrawPool ...
+  rpc WithdrawRewards(MsgWithdrawRewards) returns (MsgWithdrawRewardsResponse);
+  // UndelegatePool ...
+  rpc Undelegate(MsgUndelegate) returns (MsgUndelegateResponse);
+  // RedelegatePool ...
+  rpc Redelegate(MsgRedelegate) returns (MsgRedelegateResponse);
+}
+
+// MsgDelegate ...
+message MsgDelegate {
+  // creator ...
+  string creator = 1;
+  // staker ...
+  string staker = 2;
+  // amount ...
+  uint64 amount = 3;
+}
+
+// MsgDelegatePoolResponse defines the Msg/DelegatePool response type.
+message MsgDelegateResponse {}
+
+// MsgWithdrawPool defines a SDK message for withdrawing delegation rewards from a specific pool.
+message MsgWithdrawRewards {
+  // creator ...
+  string creator = 1;
+  // staker ...
+  string staker = 2;
+}
+
+// MsgWithdrawPoolResponse defines the Msg/WithdrawPool response type.
+message MsgWithdrawRewardsResponse {}
+
+// MsgUndelegatePool defines a SDK message for undelegating from a specific pool.
+message MsgUndelegate {
+  // creator ...
+  string creator = 1;
+  // staker ...
+  string staker = 2;
+  // amount ...
+  uint64 amount = 3;
+}
+
+// MsgUndelegatePoolResponse defines the Msg/UndelegatePool response type.
+message MsgUndelegateResponse {}
+
+// MsgRedelegatePool defines a SDK message for redelegating from a
+// staker in a pool to another staker in the same or another pool
+message MsgRedelegate {
+  // creator ...
+  string creator = 1;
+  // staker ...
+  string from_staker = 2;
+  // staker ...
+  string to_staker = 3;
+  // amount ...
+  uint64 amount = 4;
+}
+
+// MsgUndelegatePoolResponse defines the Msg/UndelegatePool response type.
+message MsgRedelegateResponse {}

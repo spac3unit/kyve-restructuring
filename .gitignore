@@ -1,0 +1,7 @@
+.idea
+.vscode
+node_modules
+release
+.DS_Store
+/scripts/
+test/.env
